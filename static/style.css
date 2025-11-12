@@ -1,0 +1,232 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: #000;
+    color: #fff;
+    font-family: 'Blinker', Arial, sans-serif;
+    min-height: 100vh;
+    height: auto;
+    display: block;
+    overflow-x: hidden;
+}
+.container {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+h1 {
+    color: #FF1F3E;
+    font-family: 'Blinker', Arial, sans-serif;
+    font-size: 3em;
+    font-weight: 700;
+    margin-bottom: 0.5em;
+}
+h2 {
+    color: #fff;
+    font-family: 'Blinker', Arial, sans-serif;
+    font-size: 1.5em;
+    font-weight: 400;
+    margin-bottom: 2em;
+}
+#funds {
+    font-size: 1.3em;
+    margin-bottom: 1em;
+    color: #fff;
+    font-family: 'Blinker', Arial, sans-serif;
+}
+.progress-bar-bg {
+    width: 100%;
+    height: 32px;
+    background: #222;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 1em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    position: relative;
+}
+.progress-bar {
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #FF1F3E 0%, #FF5F6D 100%);
+    border-radius: 16px 0 0 16px;
+    transition: width 1.5s cubic-bezier(.4,0,.2,1);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1em;
+    padding-right: 16px;
+}
+#goal {
+    font-size: 1em;
+    color: #fff;
+    margin-bottom: 2em;
+    font-family: 'Blinker', Arial, sans-serif;
+}
+.decoration {
+    display: inline-block;
+    vertical-align: middle;
+}
+.logo-bar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    position: relative;
+    z-index: 2;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+.responsive-logo {
+    height: 150px;
+    width: auto;
+    max-width: 380px;
+    object-fit: contain;
+    display: block;
+}
+.timeline-scroll-wrapper {
+    max-height: 260px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #FF1F3E #222;
+    border-radius: 12px;
+    background: rgba(0,0,0,0.7);
+    box-shadow: 0 2px 12px rgba(255,31,62,0.08);
+    margin-bottom: 32px;
+}
+.timeline-scroll-wrapper::-webkit-scrollbar {
+    width: 8px;
+}
+.timeline-scroll-wrapper::-webkit-scrollbar-thumb {
+    background: #FF1F3E;
+    border-radius: 8px;
+}
+.timeline-scroll-wrapper::-webkit-scrollbar-track {
+    background: #222;
+    border-radius: 8px;
+}
+.timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 500px;
+    position: relative;
+}
+.timeline li {
+    position: relative;
+    padding: 24px 0 24px 32px;
+    border-left: 2px solid #FF1F3E;
+    margin-left: 16px;
+    color: #fff;
+    font-family: 'Blinker', Arial, sans-serif;
+    transition: background 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+.timeline li:last-child {
+    border-left: 2px solid transparent;
+}
+.timeline-date {
+    font-weight: bold;
+    color: #fff;
+    margin-right: 12px;
+    font-size: 1.1em;
+}
+.timeline-event {
+    font-size: 1.2em;
+    color: #FF1F3E;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+.timeline li:hover {
+    background: rgba(255,31,62,0.08);
+    box-shadow: 0 2px 12px rgba(255,31,62,0.12);
+}
+.timeline li::before {
+    content: '';
+    position: absolute;
+    left: -9px;
+    top: 32px;
+    width: 16px;
+    height: 16px;
+    background: #FF1F3E;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #FF1F3E44;
+    transition: background 0.2s;
+}
+.timeline li:hover .timeline-event {
+    color: #fff;
+}
+.timeline-link {
+        text-decoration: none;
+    }
+@media (max-width: 600px) {
+    html, body {
+        min-height: 100vh;
+        height: auto;
+        width: 100vw;
+        overflow-x: hidden;
+    }
+    .responsive-logo {
+        height: 30vw;
+        max-width: 55vw;
+    }
+    .logo-bar {
+        gap: 0px;
+        margin-bottom: 0px;
+        margin-top: 0px;
+    }
+    .container {
+        max-width: 95vw;
+        padding: 5px 2vw;
+        min-height: unset;
+    }
+    h1 {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1.1em;
+    }
+    .progress-bar-bg {
+        height: 24px;
+        min-width: 0;
+        width: 100%;
+    }
+    .timeline-scroll-wrapper {
+        max-height: 200px;
+    }
+    .timeline {
+        max-width: 95vw;
+    }
+    .timeline li {
+        padding: 18px 0 18px 24px;
+        font-size: 1em;
+    }
+    .timeline-date {
+        font-size: 1em;
+    }
+    .timeline-event {
+        font-size: 1.1em;
+    }
+}
+#snow-canvas {
+    position: fixed;
+    z-index: 1000;
+    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
