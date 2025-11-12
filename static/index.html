@@ -232,7 +232,7 @@
             }, 100); // slight delay for animation
         }
         function updateFunds() {
-            fetch('https://your-flask-api.onrender.com/funds') // Use your deployed API URL here
+            fetch('https://one2-days-of-giving.onrender.com/funds') // Use your deployed API URL here
                 .then(response => response.json())
                 .then(data => {
                     const amountStr = data.amount;
