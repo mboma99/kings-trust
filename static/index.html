@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Worldpay Million Makers Challenge</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Blinker:400,700&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Blinker', Arial, sans-serif;
+            min-height: 100vh;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+        h1 {
+            color: #FF1F3E;
+            font-family: 'Blinker', Arial, sans-serif;
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 0.5em;
+        }
+        h2 {
+            color: #fff;
+            font-family: 'Blinker', Arial, sans-serif;
+            font-size: 1.5em;
+            font-weight: 400;
+            margin-bottom: 2em;
+        }
+        #funds {
+            font-size: 1.3em;
+            margin-bottom: 1em;
+            color: #fff;
+            font-family: 'Blinker', Arial, sans-serif;
+        }
+        .progress-bar-bg {
+            width: 100%;
+            height: 32px;
+            background: #222;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 1em;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, #FF1F3E 0%, #FF5F6D 100%);
+            border-radius: 16px 0 0 16px;
+            transition: width 1.5s cubic-bezier(.4,0,.2,1);
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            color: #fff;
+            font-weight: 700;
+            font-size: 1em;
+            padding-right: 16px;
+        }
+        #goal {
+            font-size: 1em;
+            color: #fff;
+            margin-bottom: 2em;
+            font-family: 'Blinker', Arial, sans-serif;
+        }
+        .decoration {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .logo-bar {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            position: relative;
+            z-index: 2;
+            margin-top: 24px;
+            margin-bottom: 24px;
+        }
+        .responsive-logo {
+            height: 150px;
+            width: auto;
+            max-width: 380px;
+            object-fit: contain;
+            display: block;
+        }
+        @media (max-width: 600px) {
+            .responsive-logo {
+                height: 32px;
+                max-width: 120px;
+            }
+            .logo-bar {
+                gap: 16px;
+                margin-bottom: 16px;
+                margin-top: 16px;
+            }
+            .container {
+                max-width: 95vw;
+                padding: 20px 5vw;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.1em;
+            }
+            .progress-bar-bg {
+                height: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-bar" style="display: flex; align-items: center; justify-content: center; margin-top:100px; width: 100%; position: relative; z-index: 2;">
+        <img src="/static/worldpayxkingtrsut.svg" alt="Worldpay Logo" class="responsive-logo" />
+    </div>
+    <canvas id="snow-canvas"></canvas>
+    <div class="container">
+        <div style="display:flex;justify-content:center;align-items:center;gap:12px;">
+            <span class="decoration">
+                <!-- Holly SVG -->
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="6" fill="#FF1F3E"/><ellipse cx="10" cy="12" rx="3" ry="1.5" fill="#1F7A1F"/><ellipse cx="22" cy="12" rx="3" ry="1.5" fill="#1F7A1F"/></svg>
+            </span>
+            <h1>12 Days of Giving Charity Event</h1>
+            <span class="decoration">
+                <!-- Holly SVG -->
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="6" fill="#FF1F3E"/><ellipse cx="10" cy="12" rx="3" ry="1.5" fill="#1F7A1F"/><ellipse cx="22" cy="12" rx="3" ry="1.5" fill="#1F7A1F"/></svg>
+            </span>
+        </div>
+        <h2>Help us raise £50,000</h2>
+        <div id="funds">Loading current funds...</div>
+        <div class="progress-bar-bg" style="position:relative;">
+            <div class="progress-bar" id="progressBar"></div>
+            <span class="decoration" style="position:absolute;left:8px;top:50%;transform:translateY(-50%);">
+                <!-- Small snowflake SVG -->
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="3" fill="#fff" opacity="0.7"/></svg>
+            </span>
+            <span class="decoration" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);">
+                <!-- Small snowflake SVG -->
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="3" fill="#fff" opacity="0.7"/></svg>
+            </span>
+        </div>
+        <div id="goal">Goal: £50,000</div>
+    </div>
+    <script>
+        // Snow animation
+        const snowCanvas = document.getElementById('snow-canvas');
+        function resizeCanvas() {
+            snowCanvas.width = window.innerWidth;
+            snowCanvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        const ctx = snowCanvas.getContext('2d');
+        let snowflakes = [];
+        function createSnowflakes() {
+            snowflakes = [];
+            const count = Math.floor(window.innerWidth / 10);
+            for (let i = 0; i < count; i++) {
+                snowflakes.push({
+                    x: Math.random() * window.innerWidth,
+                    y: Math.random() * window.innerHeight,
+                    r: Math.random() * 2 + 1,
+                    d: Math.random() * 1 + 0.5,
+                    opacity: Math.random() * 0.5 + 0.5
+                });
+            }
+        }
+        createSnowflakes();
+        window.addEventListener('resize', createSnowflakes);
+        function drawSnowflakes() {
+            ctx.clearRect(0, 0, snowCanvas.width, snowCanvas.height);
+            for (let flake of snowflakes) {
+                ctx.beginPath();
+                ctx.arc(flake.x, flake.y, flake.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255,255,255,${flake.opacity})`;
+                ctx.fill();
+            }
+            moveSnowflakes();
+        }
+        function moveSnowflakes() {
+            for (let flake of snowflakes) {
+                flake.y += flake.d;
+                if (flake.y > window.innerHeight) {
+                    flake.y = -flake.r;
+                    flake.x = Math.random() * window.innerWidth;
+                }
+            }
+        }
+        setInterval(drawSnowflakes, 30);
+        // Make canvas overlay
+        snowCanvas.style.position = 'fixed';
+        snowCanvas.style.top = '0';
+        snowCanvas.style.left = '0';
+        snowCanvas.style.pointerEvents = 'none';
+        snowCanvas.style.zIndex = '1';
+        const goal = 50000;
+        const fundsDiv = document.getElementById('funds');
+        const progressBar = document.getElementById('progressBar');
+        function parseAmount(amountStr) {
+            // Remove £ and commas, parse as float
+            return parseFloat(amountStr.replace(/[^\d.]/g, '')) || 0;
+        }
+        function animateProgressBar(current, goal) {
+            const percent = Math.min(current / goal, 1) * 100;
+            progressBar.style.width = '0';
+            setTimeout(() => {
+                progressBar.style.width = percent + '%';
+                progressBar.textContent = percent >= 10 ? `${percent.toFixed(1)}%` : '';
+            }, 100); // slight delay for animation
+        }
+        function updateFunds() {
+            fetch('https://your-flask-api.onrender.com/funds') // Use your deployed API URL here
+                .then(response => response.json())
+                .then(data => {
+                    const amountStr = data.amount;
+                    const current = parseAmount(amountStr);
+                    fundsDiv.textContent = `Current Funds Raised: £${current.toLocaleString()}`;
+                    animateProgressBar(current, goal);
+                })
+                .catch(() => {
+                    fundsDiv.textContent = 'Unable to fetch funds.';
+                    progressBar.style.width = '0';
+                    progressBar.textContent = '';
+                });
+        }
+        updateFunds(); // Initial fetch
+        setInterval(updateFunds, 7200000); // Refresh every 2 hours
+    </script>
+</body>
+</html>
