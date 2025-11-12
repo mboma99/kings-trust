@@ -204,7 +204,7 @@ h2 {
         width: 100%;
     }
     .timeline-scroll-wrapper {
-        max-height: 200px;
+        max-height: 350px;
     }
     .timeline {
         max-width: 95vw;
