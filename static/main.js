@@ -46,7 +46,7 @@ if (snowCanvas) {
     setInterval(drawSnowflakes, 30);
 }
 // Progress bar
-const goal = 50000;
+const goal = 40000;
 const fundsDiv = document.getElementById('funds');
 const progressBar = document.getElementById('progressBar');
 function parseAmount(amountStr) {
@@ -63,7 +63,8 @@ function animateProgressBar(current, goal) {
 }
 function updateFunds() {
     if (!fundsDiv || !progressBar) return;
-    fetch('https://one2-days-of-giving.onrender.com/funds')
+    // Use relative path to Netlify function - will work both locally and in production
+    fetch('/.netlify/functions/funds')
         .then(response => response.json())
         .then(data => {
             const amountStr = data.amount;
@@ -71,7 +72,8 @@ function updateFunds() {
             fundsDiv.textContent = `Current Funds Raised: £${current.toLocaleString()}`;
             animateProgressBar(current, goal);
         })
-        .catch(() => {
+        .catch((error) => {
+            console.error('Error fetching funds:', error);
             fundsDiv.textContent = 'Unable to fetch funds.';
             progressBar.style.width = '0';
             progressBar.textContent = '';

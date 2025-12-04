@@ -1,0 +1,21 @@
+{
+  "name": "kings-trust-12-days-giving",
+  "version": "1.0.0",
+  "description": "12 Days of Giving Charity Event website",
+  "main": "index.js",
+  "scripts": {
+    "start": "echo 'This is a static site - no build process needed'",
+    "build": "echo 'No build process required'"
+  },
+  "keywords": [
+    "charity",
+    "fundraising",
+    "kings-trust"
+  ],
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=18"
+  }
+}
+
